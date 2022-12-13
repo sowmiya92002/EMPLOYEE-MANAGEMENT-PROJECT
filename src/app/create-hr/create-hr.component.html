@@ -1,0 +1,60 @@
+
+<nav class="navbar navbar-expand-sm navbar-da" style="background-color:black">
+           
+    <div class="container-fluid">
+        <button onclick="history.back()"class="btn btn-primary navbar-btn"style="width:80;height: 35;">Go Back</button>   
+    <ul class = "nav navbar-nav">
+        
+     
+        <li class = "nav-item">
+            <a routerLink="/adminhome" routerLinkActive="active" class="nav-link" ><p style="color:antiquewhite">Home </p></a>
+        </li>
+       
+    </ul>
+    <button (click)="logOut()"class="btn btn-danger navbar-btn">Log out</button>
+    </div>
+</nav>
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+<div class="col-md-6 offset-md-3">
+    <h3>Add HR </h3>
+    <form (ngSubmit) = "onSubmit()"style="background-color:#E6E6FA"#createhrform="ngForm">
+        <div class="form-group">
+            <label>  Hr ID</label>
+            <input type="number" class ="form-control" id = "image"
+                [(ngModel)] = "hr.hr_id" name = "id"/>
+                
+  
+        </div>
+        <div class="form-group">
+            <label> Hr Name</label>
+            <input type="text" class ="form-control" id = "hrName"
+                [(ngModel)] = "hr.hr_name" name = "hrName"required pattern="[a-zA-Z'-'\s]*"#hrname="ngModel"
+                [class.is-invalid]="hrname.invalid&&hrname.touched"/>
+                
+                <div *ngIf="hrname.errors &&(hrname.invalid && hrname.touched)">
+                    <small class="text-danger" *ngIf="hrname.errors?.['required']">required field</small>
+                    <small class="text-danger"*ngIf="hrname.errors?.['pattern']">enter a valid name</small>
+                  </div>
+        </div>
+
+        <div class="form-group">
+            <label> Hr Email</label>
+            <input type="email" class ="form-control" id = "mail"
+                [(ngModel)] = "hr.email" name = "email"/>
+                
+                
+        </div>
+
+        
+    
+        
+    
+        
+    
+        <button [disabled]="createhrform.form.invalid"class = "btn btn-success" type ="submit">Submit</button>
+    
+    </form>
+    </div> 
+        </div></div></div>
